@@ -1,0 +1,20 @@
+{
+	"name": "ransomware",
+	"version": "1.0.0",
+	"description": "A roof of concept ransomware in node.js",
+	"scripts": {
+		"build": "node ./scripts/build.js",
+		"lint": "eslint ."
+	},
+	"keywords": [
+		"Ransomware"
+	],
+	"optionalDependencies": {
+		"pkg": "^4.4.9"
+	},
+	"author": "Eric Li",
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": "^7.5.0"
+	}
+}

@@ -1,0 +1,9 @@
+dist/
+
+node_modules/
+
+# DON'T UPLOAD YOUR PRIVATE OR PUBLIC KEY
+server/private.pem
+server/public.pem
+
+.DS_Store
