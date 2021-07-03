@@ -6,15 +6,15 @@ const { publicKey, privateKey } = generateKeyPairSync('rsa', {
 	modulusLength: 4096, // Key length 4096 for security
 	publicKeyEncoding: {
 		type: 'spki',
-		format: 'pem'
+		format: 'pem',
 	},
 	privateKeyEncoding: {
 		type: 'pkcs8',
-		format: 'pem'
-	}
+		format: 'pem',
+	},
 });
 
 writeFileSync(join(__dirname, 'server', 'private.pem'), privateKey);
 writeFileSync(join(__dirname, 'server', 'public.pem'), publicKey);
 
-console.log('Key pair generated, don\'t forget to change the PUBLIC_KEY in client/encrypt.js');
+console.log('Key pair generated, do not forget to change the PUBLIC_KEY in client/encrypt.js');
